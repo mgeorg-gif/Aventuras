@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Lora:ital,wght@0,400..700;1,400..700&family=IBM+Plex+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Blink UI Theme CSS
+   REQUIRED for @blinkdotnew/ui components to render correctly.
+   BlinkUIProvider adds .theme-{name} + .dark/.light to <html>,
+   activating the matching CSS variable set below.
+   ───────────────────────────────────────────────────────────────────────────── */
+@import '@blinkdotnew/ui/styles';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  /* Full viewport chain so AppShell / Sidebar h-full + flex-1 SidebarContent work */
+  html {
+    height: 100%;
+  }
+
+  #root {
+    min-height: 100%;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  body {
+    min-height: 100%;
+    min-height: 100dvh;
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    letter-spacing: var(--tracking-normal);
+  }
+}
+
+/* ── App palette (unlayered, after utilities) ─────────────────────────────────
+   Overrides @blinkdotnew/ui theme colors. @layer base loses specificity to UI themes.
+   Dark mode uses :root.dark + .theme-*.dark to match BlinkUIProvider.
+   ⚠️ AGENT MUST REPLACE placeholder values with a custom palette.
+   ──────────────────────────────────────────────────────────────────────────── */
+:root {
+  /* ── Dark Fantasy Storyteller — Midnight Parchment ── */
+  --background: 252 25% 6%;           /* Deep void purple-black */
+  --foreground: 42 30% 88%;           /* Warm parchment */
+  --card: 252 20% 10%;
+  --card-foreground: 42 30% 88%;
+  --popover: 252 20% 12%;
+  --popover-foreground: 42 30% 88%;
+  --primary: 43 68% 52%;              /* Gold */
+  --primary-foreground: 252 25% 6%;
+  --secondary: 252 15% 16%;
+  --secondary-foreground: 42 20% 78%;
+  --muted: 252 15% 14%;
+  --muted-foreground: 42 15% 60%;
+  --accent: 348 65% 45%;              /* Crimson */
+  --accent-foreground: 42 30% 95%;
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 42 30% 95%;
+  --border: 252 15% 18%;
+  --input: 252 15% 16%;
+  --ring: 43 68% 52%;
+
+  --chart-1: 43 68% 52%;
+  --chart-2: 348 65% 45%;
+  --chart-3: 200 65% 45%;
+  --chart-4: 150 40% 38%;
+  --chart-5: 290 40% 48%;
+
+  --sidebar: 252 25% 5%;
+  --sidebar-foreground: 42 25% 82%;
+  --sidebar-primary: 43 68% 52%;
+  --sidebar-primary-foreground: 252 25% 5%;
+  --sidebar-accent: 252 18% 14%;
+  --sidebar-accent-foreground: 42 30% 88%;
+  --sidebar-border: 252 15% 12%;
+  --sidebar-ring: 43 68% 52%;
+
+  /* Fonts */
+  --font-sans: DM Sans, sans-serif;
+  --font-serif: Lora, serif;
+  --font-mono: IBM Plex Mono, monospace;
+
+  /* Shadows */
+  --shadow-2xs: 0px 4px 8px -1px hsl(0 0% 0% / 0.05);
+  --shadow-xs: 0px 4px 8px -1px hsl(0 0% 0% / 0.05);
+  --shadow-sm: 0px 4px 8px -1px hsl(0 0% 0% / 0.10), 0px 1px 2px -2px hsl(0 0% 0% / 0.10);
+  --shadow: 0px 4px 8px -1px hsl(0 0% 0% / 0.10), 0px 1px 2px -2px hsl(0 0% 0% / 0.10);
+  --shadow-md: 0px 4px 8px -1px hsl(0 0% 0% / 0.10), 0px 2px 4px -2px hsl(0 0% 0% / 0.10);
+  --shadow-lg: 0px 4px 8px -1px hsl(0 0% 0% / 0.10), 0px 4px 6px -2px hsl(0 0% 0% / 0.10);
+  --shadow-xl: 0px 4px 8px -1px hsl(0 0% 0% / 0.10), 0px 8px 10px -2px hsl(0 0% 0% / 0.10);
+  --shadow-2xl: 0px 4px 8px -1px hsl(0 0% 0% / 0.25);
+
+  /* Misc */
+  --tracking-normal: 0em;
+  --spacing: 0.25rem;
+  --radius: 0.5rem;
+}
+
+:root.dark,
+.theme-linear.dark,
+.theme-glass.dark,
+.theme-midnight.dark,
+.theme-minimal.dark {
+  /* ── Dark Fantasy — Midnight Parchment (dark) ── */
+  --background: 252 25% 6%;
+  --foreground: 42 30% 88%;
+  --card: 252 20% 10%;
+  --card-foreground: 42 30% 88%;
+  --popover: 252 20% 12%;
+  --popover-foreground: 42 30% 88%;
+  --primary: 43 68% 52%;
+  --primary-foreground: 252 25% 6%;
+  --secondary: 252 15% 16%;
+  --secondary-foreground: 42 20% 78%;
+  --muted: 252 15% 14%;
+  --muted-foreground: 42 15% 60%;
+  --accent: 348 65% 45%;
+  --accent-foreground: 42 30% 95%;
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 42 30% 95%;
+  --border: 252 15% 18%;
+  --input: 252 15% 16%;
+  --ring: 43 68% 52%;
+
+  --chart-1: 43 68% 60%;
+  --chart-2: 348 65% 55%;
+  --chart-3: 200 65% 50%;
+  --chart-4: 150 40% 45%;
+  --chart-5: 290 40% 55%;
+
+  --sidebar: 252 25% 5%;
+  --sidebar-foreground: 42 25% 82%;
+  --sidebar-primary: 43 68% 52%;
+  --sidebar-primary-foreground: 252 25% 5%;
+  --sidebar-accent: 252 18% 14%;
+  --sidebar-accent-foreground: 42 30% 88%;
+  --sidebar-border: 252 15% 12%;
+  --sidebar-ring: 43 68% 52%;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

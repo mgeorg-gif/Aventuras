@@ -1,5 +1,6 @@
 /**
  * Text utility functions for cleaning and normalizing text content.
+ * Ported from mgeorg-gif/Aventuras src/lib/utils/text.ts (framework-agnostic).
  */
 
 const uncommonCharacters: Record<string, string> = {
@@ -51,7 +52,7 @@ export function createFuzzyTextRegex(text: string): RegExp {
   const normalized = replaceUncommonCharacters(text)
 
   // 2. Extract alphanumeric "words"
-  const words = normalized.split(/[^a-zA-Z0-9'’‘‚]+/).filter((word) => word.length > 0)
+  const words = normalized.split(/[^a-zA-Z0-9''‚]+/).filter((word) => word.length > 0)
 
   if (words.length === 0) {
     return new RegExp(escapeRegex(text), 'gi')
@@ -133,4 +134,12 @@ export function expandRangeBidirectional(
     start: currentStart,
     end: currentEnd,
   }
+}
+
+/**
+ * Normalizes smart quotes, em/en dashes, and other typographic glyphs
+ * to their ASCII equivalents. Convenience wrapper for the internal helper.
+ */
+export function normalizeText(content: string): string {
+  return replaceUncommonCharacters(content)
 }
